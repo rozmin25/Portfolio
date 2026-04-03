@@ -1,0 +1,378 @@
+<DOCKTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            <meta name="viewport" content="width=device-width,intial-scale=1.0">
+            <title>Rozmin-Portfolio</title>
+            <style>
+                html{
+                    scroll-behavior: smooth;
+                }
+                * {
+                    margin:0;
+                    padding:0;
+                    box-sizing:border-box;
+                }
+                body{
+                    font-family:'Times New Roman', Times, serif;
+                    line-height:1.6;
+                    color:rgb(212, 161, 178);
+                    background: #020001;
+                    overflow-x:hidden;
+                }
+                nav{
+                    position:fixed;
+                    top:0;
+                    width:100%;
+                    background:rgb(222, 165, 184);
+                    backdrop-filter:blur(10px);
+                    z-index:1000;
+                    padding:1rem 0;
+                    box-shadow: 0 2px 20px rgba(64, 22, 30, 0.1);
+                }
+                nav .container{
+                    max-width:1200px;
+                    margin:0 auto;
+                    display:flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding:0 2rem;
+                }
+                .logo{
+                    font-size:1.5rem;
+                    font-weight:700;
+                    color:rgb(140, 11, 54);
+                }
+                .nav-links{
+                    display:flex;
+                    list-style:none;
+                    gap:2rem;
+                }
+                .nav-links a {
+                    text-decoration: none;
+                    color:rgb(140, 11, 54);
+                    font-weight:500;
+                    transition:color 0.3s;
+                }
+                .nav-links a:hover{
+                    color:palevioletred;
+                }
+                .hero{
+                    height:200hv;
+                    border-radius: 20px;
+                    background:-linear-gradient(135deg, #d8a2bb 0%, #ee6ba2 100%);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    text-align:center;
+                    color:rgb(230, 132, 159);
+                    position:relative;
+                    overflow:hidden;
+                }
+                .hero::before{
+                    content:'';
+                    border-radius: 20px;
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:linear-gradient(rgb(222, 165, 184),rgb(88, 44, 59));
+                    animation:float 10s infinite linear;
+                }
+                @keyframes float{
+                    0% { transform: translateY(0); }
+                    90% { transform: translateY(-90px); }
+                }
+                .profile-pic{
+                    height:15rem;
+                    width:15rem;
+                    border-radius:50%;
+                    object-fit:cover;
+                    margin-bottom:15px;
+                    border:3px solid rgb(115, 71, 78);
+                }
+                .hero-content{
+                    max-width:800px;
+                    padding:0 2rem;
+                    position:relative;
+                    z-index:2;
+                }
+                .hero h1{
+                    font-size:clamp(2.5rem,5vw,4rem);
+                    color:rgb(119, 50, 73);
+                    margin-bottom:1rem;
+                    font-weight:700;
+                }
+                .hero p{
+                    font-size:1.3rem;
+                    margin-bottom:2rem;
+                    opacity:0.9;
+                    color:rgb(222, 165, 184);
+                }
+                .cta-button{
+                    display:inline-block;
+                    background:rgb(143, 75, 97);
+                    color:rgb(252, 187, 204);
+                    padding:1rem 2rem;
+                    border-radius:50px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size:1.1rem;
+                    transition: all 0.3s;
+                    box-shadow: 0 10px 30px rgba(135, 71, 90, 0.3);
+                }
+                .cta-button:hover{
+                    transform: translateY(-3px);
+                    box-shadow: 0 15px 40px rgba(231, 227, 228, 0.3);
+                    color:#4b0c29;
+                }
+                .container{
+                    max-width:1600px;
+                    margin:0 auto;
+                    padding:0 2rem;
+                }
+                section{
+                    padding:100px 0;
+                    scroll-margin-top: 80px;
+                }
+                h2{
+                    font-size:2.5rem;
+                    text-align:center;
+                    margin-bottom:3rem;
+                    color:rgb(166, 104, 129);
+                }
+                .about-content{
+                    max-width:1500px;
+                    margin:0 auto;
+                    text-align:center;
+                }
+                .about-content p{
+                    font-size:1.1rem;
+                    margin-bottom:2rem;
+                    color:rgb(231, 159, 177);
+                }
+                #skills{
+                    background:linear-gradient(rgb(222, 165, 184),rgb(86, 59, 68));
+                    border-radius:20px;
+                    padding:60px 20px;
+                    margin:40px 20px;
+                }
+                .skills-grid{
+                    display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+                    gap:2rem;
+                    margin-top:3rem;
+                }
+                .skill-card{
+                    background:#502931;
+                    padding:2rem;
+                    border-radius:20px;
+                    box-shadow: 0 15px 40px rgba(139, 74, 89, 0.3);
+                    text-align:center;
+                    transition: transform 0.3s;
+                }
+                .skill-card:hover{
+                    transform:translateY(-10px);
+                }
+                .skill-icon{
+                    font-size:2.8rem;
+                    color:#2e0514;
+                    margin-bottom:1rem;
+                }
+                .projects-grid{
+                    display:grid;
+                    border-radius:50px;
+                    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+                    gap:2rem;
+                }
+                .project-card{
+                    background:rgb(154, 103, 120);
+                    border-radius:20px;
+                    overflow: hidden;
+                    box-shadow:0 15px 40px rgba(139, 74, 89, 0.3);
+                    transition:all 0.3s;
+                }
+                .project-card:hover{
+                    transform:translateY(-10px);
+                    box-shadow: 0 15px 40px rgba(139, 74, 89, 0.3);
+                }
+                .project-image{
+                    height:200px;
+                    background:linear-gradient(rgb(222, 165, 184),rgb(64, 34, 44));
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    color:rgb(208, 131, 157);
+                    font-size:1.2rem;
+                    position:relative;
+                }
+                .project-content{
+                    padding:2rem;
+                }
+                .project-content h3{
+                    margin-bottom: 1rem;
+                    color:#562330;
+                }
+                .project-content p{
+                    color:#512832;
+                    margin-bottom:1.5rem;
+                }
+                .project-links{
+                    display:flex;
+                    gap:1rem;
+                }
+                .project-links a{
+                    color:rgb(173, 166, 168);
+                    font-weight:500;
+                    text-decoration: none;
+                }
+                .project-links a:hover{
+                    color:rgb(99, 53, 68);
+                }
+                .contact-content{
+                    max-width:600px;
+                    margin:0 auto;
+                    text-align:center;
+                }
+                .contact-links{
+                    display:flex;
+                    justify-content:center;
+                    gap:2rem;
+                    margin-top:2rem;
+                    flex-wrap:wrap;
+                }
+                .contact-link{
+                    display:flex;
+                    align-items:center;
+                    gap:0.5rem;
+                    color:rgb(173, 166, 168);
+                    text-decoration: none;
+                    font-weight:500;
+                    padding:1rem;
+                    border-radius:12px;
+                    transition:background 0.3s;
+                }
+                .contact-link:hover{
+                    color:rgb(127, 63, 85);
+                }
+                footer{
+                    background:rgb(159, 109, 126);
+                    color:#6f283b;
+                    text-align:center;
+                    padding:1rem;
+                }
+                @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+        }
+
+          </style>
+                </head>
+                <body>
+                    <nav>
+                        <div class="container">
+                            <div class="logo">Rozmin Khan</div>
+                            <ul class="nav-links">
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#skills">Skills</a></li>
+                                <li><a href="#projects">Projects</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <section id="home" class="hero">
+                        <div class="hero-content">
+                            <img src="" class="profile-pic">
+                            <h1>Hi, I'm <span style="color:rgb(111, 54, 69)">Rozmin</span></h1>
+                            <p>BCA student | Creative Learner</p>
+                            <a href="#projects" class="cta-button">View my Work</a>
+                        </div>
+                    </section>
+                    <section id="about">
+                        <div class="container">
+                            <h2>About me</h2>
+                            <div class="about-content">
+                                <p>I am a BCA student with an interest in technology and business.</p>
+                                <p>I have a good understanding of accounts and enjoy learning new skills.</p> 
+                                <p>I am currently exploring web development and design.</p> 
+                            </div>
+                        </div>
+                    </section>
+                    <section id="skills">
+                        <div class="container">
+                            <h2>Skills & Technologies</h2>
+                            <div class="skills-grid">
+                                <div class="skill-card">
+                                    <div class="skill-icon">
+                                        <i class="fab da-html5"></i>
+                                        </div>
+                                        <h3>Frontend</h3>
+                                        <p>HTML, CSS, JavaScript (Basic)</p>
+                                    </div>
+                                    <div class="skill-card">
+                                        <div class="skill-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <h3>Design</h3>
+                                        <p>Canva, Figma</p>
+                                    </div>
+                                    <div class="skill-card">
+                                        <div class="skill-icon">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+                                        <h3>Business Skills</h3>
+                                        <p>Basic Accounting, Business Understanding</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    
+                            <section id="projects">
+                             <div class="container">
+                                  <h2>Featured Projects</h2>
+                                  <div class="projects-grid">
+                                     <div class="project-card">
+                                          <div class="project-image">Task Manager</div>
+                                             <div class="project-content">
+                                                  <h3>Productivity App</h3>
+                                                 <p>Real-time collaborative task manager built with React and Firebase. Drag & drop interface.</p>
+                                                    <div class="project-links">
+                                                        <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                                        <a href="#"><i class="fab fa-github"></i> Code</a>
+                                                    </div>
+                                                </div>
+                                         </div>
+                                     </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="contact">
+                                <div class="container">
+                                    <h2>Let's work together</h2>
+                                    <div class="contact-content">
+                                        <p>I'm always interested in new oppurtunities and collaborations. Get in touch!</p>
+                                        <div class="contact-links">
+                                            <a href="rozminpathan2502@gmail.com" class="contact-link">
+                                                <i class="fas fa-envelope"></i>rozminpathan2502@gmail.com
+                                            </a>
+                                            <a href="https://www.linkedin.com/in/rozmin-khan-b28a38296/" class="contact-link">
+                                                <i class="fas fa-linkedin"></i>LinkedIn
+                                            </a>
+                                            <a href="https://github.com/rozmin25" class="contact-link">
+                                                <i class="fas fa-github"></i>GitHub
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <footer>
+                                <p>2026 Rozmin</p>
+                            </footer>
+                            
+                        </body>
+                    </html>
